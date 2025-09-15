@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Novo Ingrediente</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Adicionar Ingrediente</h1>
+<form th:action="@{/ui/food}" th:object="${food}" method="post">
+    Nome: <input type="text" th:field="*{nome}" /><br/>
+    Categoria: <input type="text" th:field="*{categoria}" /><br/>
+    Quantidade: <input type="number" th:field="*{quantidade}" /><br/>
+    Validade: <input type="date" th:field="*{validade}" /><br/>
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ingredientes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Minha Geladeira</h1>
+<a href="/ui/food/new">Adicionar Ingrediente</a>
+<ul>
+    <li th:each="food : ${foods}">
+        <span th:text="${food.nome}"></span> -
+        <span th:text="${food.categoria}"></span> -
+        <span th:text="${food.quantidade}"></span>
+    </li>
+</ul>
+</body>
+</html>

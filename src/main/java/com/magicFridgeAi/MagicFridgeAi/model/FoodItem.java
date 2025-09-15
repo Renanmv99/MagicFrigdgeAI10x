@@ -4,12 +4,14 @@ import com.magicFridgeAi.MagicFridgeAi.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Table(name = "food_item")
 public class FoodItem {
 

@@ -73,8 +73,13 @@ Este controller gerencia os itens na sua "geladeira" virtual.
 
 Consome os ingredientes cadastrados e os envia para a IA.
 
-* `GET /generate`
-    * Gera uma receita com base em todos os ingredientes atualmente cadastrados no banco de dados.
+* `GET /generate?meal=<MEAL>`
+    * Gera uma receita com base na refeição escolhida e em todos os ingredientes atualmente cadastrados no banco de dados.
+    * As refeições podem ser:
+      * CAFE_DA_MANHA
+      * ALMOCO
+      * CAFE_DA_TARDE
+      * JANTA
     * **Exemplo de Resposta**:
     ```
     "Receita para Salada de Tomate com Manjericão e Queijo:..."

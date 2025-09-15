@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gerar Receita</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Gerar Receita</h1>
+<form th:action="@{/ui/recipe}" method="post">
+    <label for="meal">Refeição:</label>
+    <select id="meal" name="meal">
+        <option value="CAFE_DA_MANHA">Café da Manhã</option>
+        <option value="ALMOCO">Almoço</option>
+        <option value="CAFE_DA_TARDE">Café da Tarde</option>
+        <option value="JANTA">Janta</option>
+    </select>
+    <button type="submit">Gerar</button>
+</form>
+</body>
+</html>
