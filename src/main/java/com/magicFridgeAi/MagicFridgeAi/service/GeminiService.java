@@ -1,5 +1,6 @@
 package com.magicFridgeAi.MagicFridgeAi.service;
 
+import com.magicFridgeAi.MagicFridgeAi.enums.Meal;
 import com.magicFridgeAi.MagicFridgeAi.model.FoodItem;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -22,14 +23,17 @@ public class GeminiService {
 
     private String apiKey = System.getenv("API_KEY");
 
-    public Mono<String> generateRecipe(List<FoodItem> foodItems) {
+    public Mono<String> generateRecipe(List<FoodItem> foodItems, Meal meal) {
         String alimentos = foodItems.stream()
                 .map(item -> String.format("Nome: %s, Quantidade: %d, Categoria: %s, Validade: %s",
                         item.getNome(), item.getQuantidade(), item.getCategoria(), item.getValidade()))
                 .collect(Collectors.joining("\n"));
 
         String prompt = "Com os seguintes ingredientes disponíveis na geladeira: " + alimentos +
-                ", por favor, crie uma receita prática. A receita deve ser uma sugestão realista baseada no que foi listado. Não é preciso usar todos os itens. Apenas me dê uma ideia de prato que possa ser feito.";
+                " crie uma receita prática. A receita deve ser uma sugestão realista baseada no que foi listado. " +
+                "\nCrie a receita com base no tipo de refeição que o usuário enviou: " + meal +
+                "\nNão é preciso usar todos os itens. Apenas me dê uma ideia de prato que possa ser feito.";
+
         Map<String, Object> requestBody = Map.of(
                 "model", "gemini-1.5-flash",
                 "contents", List.of(
